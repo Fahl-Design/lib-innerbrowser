@@ -1013,8 +1013,8 @@ class InnerBrowser extends Module implements Web, PageSourceSaver, ElementLocato
         $formId = $form->attr('id');
         if ($formId !== null) {
             $fakeForm = $fakeDom->firstChild;
-            $topParent = $form->parents()->last();
-            $fieldsByFormAttribute = $topParent->filter(
+            $topAncestor = $form->ancestors()->last();
+            $fieldsByFormAttribute = $topAncestor->filter(
                 sprintf('input[form=%s],select[form=%s],textarea[form=%s]', $formId, $formId, $formId)
             );
             foreach ($fieldsByFormAttribute as $field) {
@@ -1044,7 +1044,7 @@ class InnerBrowser extends Module implements Web, PageSourceSaver, ElementLocato
         if (strcasecmp($node->first()->getNode(0)->tagName, 'form') === 0) {
             $form = $node->first();
         } else {
-            $form = $node->parents()->filter('form')->first();
+            $form = $node->ancestors()->filter('form')->first();
         }
 
         if (!$form) {
