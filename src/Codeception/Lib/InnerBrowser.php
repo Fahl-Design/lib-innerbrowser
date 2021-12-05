@@ -157,7 +157,7 @@ class InnerBrowser extends Module implements Web, PageSourceSaver, ElementLocato
         array $files = [],
         array $server = [],
         string $content = null
-    ): string {
+    ): ?string {
         $this->clientRequest($method, $uri, $parameters, $files, $server, $content);
         return $this->_getResponseContent();
     }
