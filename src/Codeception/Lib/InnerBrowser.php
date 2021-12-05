@@ -1211,7 +1211,7 @@ class InnerBrowser extends Module implements Web, PageSourceSaver, ElementLocato
             return;
         }
 
-        $formField->select($this->matchOption($field, $option));
+        $formField->select((string) $this->matchOption($field, $option));
     }
 
     /**
